@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    enviroment {
+        PYTHON = C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe
+
+    }
 
     stges {
         stages("checkout code") {
@@ -9,12 +13,12 @@ pipeline{
         }
     stages("show python version") {
         steps {
-            bat python --version
+            bat "${env.PYTHON} --version"
             }
         }
     stages("run ectractfile.py") {
         steps {
-            but python ectractfile.py
+            but $"{env.PYTHON} ectractfile.py"
             }
         }
     }
